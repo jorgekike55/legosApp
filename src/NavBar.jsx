@@ -3,65 +3,39 @@ import { FaShoppingCart } from "react-icons/fa";
 
 export const Navbar = ({ cartCount }) => {
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2" style={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 1000 }}>
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
-
+        <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 text-white shadow-md">
+            <div className="flex items-center justify-between px-6 py-3">
+                <div className="flex items-center gap-6">
                     <NavLink
-                        className="nav-item nav-link"
                         to="/"
+                        className={({ isActive }) =>
+                            `font-semibold transition-colors hover:text-yellow-400 ${isActive ? "text-yellow-400" : "text-white"}`
+                        }
                     >
                         Inicio
                     </NavLink>
-
                     <NavLink
-                        className="nav-item nav-link"
                         to="/legos"
+                        className={({ isActive }) =>
+                            `font-semibold transition-colors hover:text-yellow-400 ${isActive ? "text-yellow-400" : "text-white"}`
+                        }
                     >
                         Legos
                     </NavLink>
                 </div>
-            </div>
-
-
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end  ">
-                <ul className="navbar-nav ml-auto">
-                    <NavLink className="nav-item nav-link" to="/comprar" style={{ position: "relative", padding: 0, marginRight: "2rem" }}>
-                        <FaShoppingCart size={24} color="white" />
+                <div className="flex items-center gap-6">
+                    <NavLink to="/comprar" className="relative">
+                        <FaShoppingCart size={26} />
                         {cartCount > 0 && (
                             <span
-                                style={{
-                                    position: "absolute",
-                                    top: "-8px",
-                                    right: "-10px",
-                                    minWidth: "28px",
-                                    height: "28px",
-                                    background: "#dc3545",
-                                    color: "#fff",
-                                    borderRadius: "50%",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    fontSize: "1.1rem",
-                                    fontWeight: "bold",
-                                    zIndex: 1,
-                                    boxShadow: "0 0 2px #333"
-                                }}
+                                className="absolute -top-2 -right-3 bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-base font-bold shadow"
                             >
                                 {cartCount}
                             </span>
                         )}
                     </NavLink>
-                </ul>
-                <ul className="navbar-nav ml-auto">
-                    <NavLink
-                        className="nav-item nav-link"
-                        to="/login"
-                    >
-                        Login
-                    </NavLink>
-                </ul>
+                </div>
             </div>
         </nav>
-    )
+    );
 }

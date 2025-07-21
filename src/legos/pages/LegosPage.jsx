@@ -62,24 +62,29 @@ export default function LegosPage({ cart, setCart }) {
 
     return (
         <>
-            <h1 align="center" style={{ fontWeight: "bold" }}>Catálogo</h1>
             {data.map((categoriaObj, idx) => (
-                <div key={idx} style={{ marginBottom: "2rem" }}>
+                <div key={idx} className="mb-8">
                     <h1
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "1rem",
-                            cursor: "pointer",
-                            color: "#007bff"
-                        }}
+                        className="flex items-center justify-center gap-4 cursor-pointer text-2xl md:text-3xl font-extrabold text-white bg-blue-700/80 hover:bg-blue-800/90 px-6 py-3 rounded-2xl shadow transition text-center"
                         onClick={() => toggleCollapse(categoriaObj.categoria)}
                         aria-label={collapsed[categoriaObj.categoria] ? "Expandir" : "Colapsar"}
                     >
                         {categoriaObj.categoria}
                     </h1>
                     {!collapsed[categoriaObj.categoria] && (
-                        <div style={gridStyle}>
+                        <div
+                            className="
+                                grid
+                                sm:grid-cols-1
+                                md:grid-cols-2
+                                lg:grid-cols-3
+                                xl:grid-cols-4
+                                gap-4
+                                px-4
+                                border-l-2 border-r-2 border-gray-300
+                                box-border
+                            "
+                        >
                             {categoriaObj.legos.map((lego, i) => (
                                 <LegosCard
                                     key={i}
@@ -93,6 +98,8 @@ export default function LegosPage({ cart, setCart }) {
                     )}
                 </div>
             ))}
+
         </>
     );
+
 }
