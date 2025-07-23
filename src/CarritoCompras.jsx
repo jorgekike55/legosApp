@@ -3,12 +3,11 @@ export default function CarritoCompras({ cart, setCart }) {
     let urlWhassap = "https://wa.link/pact9p";
 
     function whatsappLink() {
-        let mensaje = encodeURIComponent(
+        const mensaje = encodeURIComponent(
             `Hola! \nEstoy interesado en comprar los siguientes legos:\n` +
             cart.map(item => `${item["Nombre"] || item["NOMBRE"]} (Código: ${item.COD}) - Cantidad: ${item.cantidad || 1}`).join("\n") +
-            `\n\nA que número puedo enviar la información de pago`);
+            `\n\nA que número puedo enviar la información de pago?`);
 
-        console.log("Mensaje, mensaje: ", mensaje);
         urlWhassap = `https://wa.me/573226609407?text=${mensaje}`;
     }
 
