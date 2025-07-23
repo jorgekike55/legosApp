@@ -1,5 +1,17 @@
 export default function CarritoCompras({ cart, setCart }) {
 
+    let urlWhassap = "https://wa.link/pact9p";
+
+    function whatsappLink() {
+        let mensaje = encodeURIComponent(
+            `Hola! \nEstoy interesado en comprar los siguientes legos:\n` +
+            cart.map(item => `${item["Nombre"] || item["NOMBRE"]} (Código: ${item.COD}) - Cantidad: ${item.cantidad || 1}`).join("\n") +
+            `\n\nA que número puedo enviar la información de pago`);
+
+        console.log("Mensaje, mensaje: ", mensaje);
+        urlWhassap = `https://wa.me/573226609407?text=${mensaje}`;
+    }
+
     const handleSelect = (cod, value) => {
         setCart(cart =>
             cart.map(item =>
@@ -87,7 +99,7 @@ export default function CarritoCompras({ cart, setCart }) {
                         </span>
                     </div>
                     <button className="mt-6 w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded transition">
-                        <a href="https://wa.link/pact9p" className="block w-full h-full">Comunicarse con el vendedor</a>
+                        <a onClick={whatsappLink()} href={urlWhassap} className="block w-full h-full">Comprar</a>
                     </button>
                 </div>
             </div>
