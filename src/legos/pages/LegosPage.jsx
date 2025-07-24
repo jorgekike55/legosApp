@@ -70,6 +70,7 @@ export default function LegosPage({ cart, setCart }) {
                         aria-label={collapsed[categoriaObj.categoria] ? "Expandir" : "Colapsar"}
                     >
                         {categoriaObj.categoria}
+                        <div></div>
                     </h1>
                     {!collapsed[categoriaObj.categoria] && (
                         <div
@@ -83,6 +84,7 @@ export default function LegosPage({ cart, setCart }) {
                                 px-4
                                 border-l-2 border-r-2 border-gray-300
                                 box-border
+                                mt-5
                             "
                         >
                             {categoriaObj.legos.map((lego, i) => (
